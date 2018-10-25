@@ -15,12 +15,16 @@ public class Frontend {
     private JPanel panel1;
     private JFormattedTextField a6FormattedTextField;
     private JFormattedTextField a24FormattedTextField;
+    private JTextArea result;
 
     public Frontend() {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Backend.clickDelegator(e, a6FormattedTextField, a24FormattedTextField);
+                Backend.clickDelegator(e,
+                        a6FormattedTextField,
+                        a24FormattedTextField,
+                        result);
             }
         });
     }
@@ -43,6 +47,5 @@ public class Frontend {
 
         a6FormattedTextField  = new JFormattedTextField(formatter);
         a24FormattedTextField = new JFormattedTextField(formatter);
-
     }
 }

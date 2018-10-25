@@ -1,6 +1,7 @@
 package com.GCDCalcGUI;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,14 +21,18 @@ public class Backend {
         long temp = 1;
 
         while (temp != 0) {
+            long sk = 0, tk = 0;
             // Calculating rk from rk-2 mod rk-1
             long rk = steps.get(steps.size() - 2)[0] % steps.get(steps.size() - 1)[0] ;
             // Calculating qk from rounded down rk-2/rk-1
             long qk = Math.floorDiv(steps.get(steps.size() - 2)[0], steps.get(steps.size() - 1)[0]);
-            // Calculating sk from sk-2 - qk*sk-1
-            long sk = (steps.get(steps.size() - 2)[2] - (steps.get(steps.size() - 1)[2] * qk));
-            // Calculating tk from tk-2 - qk*tk-1
-            long tk = (steps.get(steps.size() - 2)[3] - (steps.get(steps.size() - 1)[3] * qk));
+            if (rk != 0){
+                // Calculating sk from sk-2 - qk*sk-1
+                sk = (steps.get(steps.size() - 2)[2] - (steps.get(steps.size() - 1)[2] * qk));
+                // Calculating tk from tk-2 - qk*tk-1
+                tk = (steps.get(steps.size() - 2)[3] - (steps.get(steps.size() - 1)[3] * qk));
+            }
+
 
             long[] curr = {rk, qk, sk, tk};
             steps.add(curr);
@@ -38,10 +43,20 @@ public class Backend {
     }
 
 
-    public static void clickDelegator(ActionEvent e, JFormattedTextField text1, JFormattedTextField text2) {
-        System.out.println("v nice");
-        System.out.println(text1.getValue());
-        System.out.println(text2.getValue());
+    public static void clickDelegator(ActionEvent e, JFormattedTextField text1, JFormattedTextField text2, JTextArea result) {
+        result.setText("");
+        result.append("k\tqk\trk\tsk\ttk\n");
+        List<long[]> resultVals = gcdE(Long.parseLong(text1.getValue().toString()),
+                                       Long.parseLong(text2.getValue().toString()));
+
+        for (int i = 0; i < resultVals.size(); i++) {
+            String temp = String.format(
+                    "%s\t%s\t%s\t%s\t%s\n"
+                    , i-1, resultVals.get(i)[1], resultVals.get(i)[0], resultVals.get(i)[2],
+                    resultVals.get(i)[3]);
+            result.append(temp);
+
+        }
 
     }
 }
