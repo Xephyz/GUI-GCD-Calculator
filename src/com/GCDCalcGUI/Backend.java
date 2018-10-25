@@ -1,12 +1,14 @@
 package com.GCDCalcGUI;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Backend {
 
-    static void gcdE(long a, long b) {
+    static List<long[]> gcdE(long a, long b) {
 
         List<long[]> steps = new ArrayList<>();
 
@@ -31,13 +33,15 @@ public class Backend {
             steps.add(curr);
             temp = rk;
         }
-        System.out.println(Arrays.toString(steps.get(steps.size()-1)));
+
+        return steps;
     }
 
-    public static void main(String[] args){
-        int p = 125;
-        int q = 552;
-        gcdE(p, q);
-    }
 
+    public static void clickDelegator(ActionEvent e, JFormattedTextField text1, JFormattedTextField text2) {
+        System.out.println("v nice");
+        System.out.println(text1.getValue());
+        System.out.println(text2.getValue());
+
+    }
 }

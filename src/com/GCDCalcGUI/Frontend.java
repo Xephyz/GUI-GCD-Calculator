@@ -20,7 +20,7 @@ public class Frontend {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Hi!");
+                Backend.clickDelegator(e, a6FormattedTextField, a24FormattedTextField);
             }
         });
     }
@@ -34,9 +34,9 @@ public class Frontend {
         NumberFormat format = NumberFormat.getInstance();
 
         NumberFormatter formatter = new NumberFormatter(format);
-        formatter.setValueClass(Long.class);
+        formatter.setValueClass(Integer.class);
         formatter.setMinimum(0);
-        formatter.setMaximum(Long.MAX_VALUE);
+        formatter.setMaximum(Integer.MAX_VALUE);
         formatter.setAllowsInvalid(false);
         // If you want the value to be committed on each keystroke instead of focus lost
         formatter.setCommitsOnValidEdit(true);
