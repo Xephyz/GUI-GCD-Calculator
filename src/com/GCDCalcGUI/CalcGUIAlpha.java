@@ -1,4 +1,4 @@
-package com.GUI2;
+package com.GCDCalcGUI;
 
 import javax.swing.*;
 import javax.swing.JOptionPane;
