@@ -9,16 +9,17 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CalcGUIAlpha {
+public class Frontend {
     private JButton button1;
     private JPanel panel1;
     private JTextField a6TextField;
     private JTextField a24TextField;
 
-    public CalcGUIAlpha() {
+    public Frontend() {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,13 +28,11 @@ public class CalcGUIAlpha {
         });
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("GCD Calculator");
-        frame.setContentPane(new CalcGUIAlpha().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+    public Container getPanel(){
+        return panel1;
     }
+
+
 }
 
 class MyIntFilter extends DocumentFilter {
