@@ -34,9 +34,9 @@ public class Frontend {
         NumberFormat format = NumberFormat.getInstance();
 
         NumberFormatter formatter = new NumberFormatter(format);
-        formatter.setValueClass(Integer.class);
+        formatter.setValueClass(Long.class);
         formatter.setMinimum(0);
-        formatter.setMaximum(Integer.MAX_VALUE);
+        formatter.setMaximum(Long.MAX_VALUE);
         formatter.setAllowsInvalid(false);
         // If you want the value to be committed on each keystroke instead of focus lost
         formatter.setCommitsOnValidEdit(true);
