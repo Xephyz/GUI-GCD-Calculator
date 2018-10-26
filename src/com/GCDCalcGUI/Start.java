@@ -10,5 +10,6 @@ public class Start {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setSize(400,250);
     }
 }
